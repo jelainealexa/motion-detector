@@ -80,22 +80,23 @@ while True:
     _, frame = cap.read()
     frame = imutils.resize(frame, width=500)
 
-    # Convert frame to grayscale
-    frame_bw = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
+    if alarm_mode:
+        # Convert frame to grayscale
+        frame_bw = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
 
-    # Apply Gaussian blur to reduce noise
-    frame_bw = cv2.GaussianBlur(frame_bw, (5, 5), 0)
+        # Apply Gaussian blur to reduce noise
+        frame_bw = cv2.GaussianBlur(frame_bw, (5, 5), 0)
 
-    # Compute the difference between the current frame and the start frame
-    difference = cv2.absdiff(frame_bw, start_frame)
+        # Compute the difference between the current frame and the start frame
+        difference = cv2.absdiff(frame_bw, start_frame)
 
-    # Apply threshold to the difference to highlight motion
-    threshold = cv2.threshold(difference, 25, 255, cv2.THRESH_BINARY)[1]
-    start_frame = frame_bw
+        # Apply threshold to the difference to highlight motion
+        threshold = cv2.threshold(difference, 25, 255, cv2.THRESH_BINARY)[1]
+        start_frame = frame_bw
 
-    # If motion is detected
-    if threshold.sum() > 300:
-        threading.Thread(target=beep_alarm).start()
+        # If motion is detected
+        if threshold.sum() > 300:
+            threading.Thread(target=beep_alarm).start()
 
     if alarm_counter > 20:
         threading.Thread(target=capture_image).start()
