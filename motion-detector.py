@@ -27,6 +27,7 @@ while True:
     frame_bw = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
 
     # Apply Gaussian blur to reduce noise
+    frame_bw = cv2.GaussianBlur(frame_bw, (5, 5), 0)
 
     # Compute the difference between the current frame and the start frame
     # Apply threshold to the difference to highlight motion
