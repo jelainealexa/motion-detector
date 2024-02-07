@@ -64,7 +64,7 @@ def beep_alarm():
         if not alarm_mode:
             break
         print("ALARM")
-        winsound.Beep(2750, 1000)
+        winsound.Beep(2000, 1000)
     alarm = False
 
 # Capture image and send email
