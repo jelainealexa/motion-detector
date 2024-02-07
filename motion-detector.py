@@ -40,3 +40,6 @@ while True:
     cv2.imshow("Cam", threshold)
     
     # Key press to exit loop
+    key_pressed = cv2.waitKey(30)
+    if key_pressed == ord("q"):
+        break
