@@ -30,7 +30,11 @@ while True:
     frame_bw = cv2.GaussianBlur(frame_bw, (5, 5), 0)
 
     # Compute the difference between the current frame and the start frame
+    difference = cv2.absdiff(frame_bw, start_frame)
+    
     # Apply threshold to the difference to highlight motion
+    threshold = cv2.threshold(difference, 25, 255, cv2.THRESH_BINARY)[1]
+    start_frame = frame_bw
     
     # Display the thresholded frame
     
