@@ -1,9 +1,11 @@
-# Initialize camera capture
+# Import libraries
 
 import cv2
 import imutils
+import winsound
+import threading
 
-# Set camera properties
+# Initialize camera capture
 
 cap = cv2.VideoCapture(0, cv2.CAP_DSHOW)
 cap.set(cv2.CAP_PROP_FRAME_WIDTH, 640)
@@ -15,6 +17,12 @@ _, start_frame = cap.read()
 start_frame = imutils.resize(start_frame, width=500)
 start_frame = cv2.cvtColor(start_frame, cv2.COLOR_BGR2GRAY)
 start_frame = cv2.GaussianBlur(start_frame, (21, 21), 0)
+
+# Beep the alarm
+def beep_alarm():
+    for _ in range(5):
+        print("ALARM")
+        winsound.Beep(2750, 1000)
 
 # Main loop
 while True:
