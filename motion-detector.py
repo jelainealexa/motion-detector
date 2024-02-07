@@ -41,13 +41,11 @@ def send_email(subject, sender, recipients, body, image_filename=None):
     print("Message sent!")
 
 # Initialize camera capture
-
 cap = cv2.VideoCapture(0, cv2.CAP_DSHOW)
 cap.set(cv2.CAP_PROP_FRAME_WIDTH, 640)
 cap.set(cv2.CAP_PROP_FRAME_HEIGHT, 480)
 
 # Read the 1st frame as the starting frame
-
 _, start_frame = cap.read()
 start_frame = imutils.resize(start_frame, width=500)
 start_frame = cv2.cvtColor(start_frame, cv2.COLOR_BGR2GRAY)
@@ -81,10 +79,7 @@ while True:
     frame = imutils.resize(frame, width=500)
 
     if alarm_mode:
-        # Convert frame to grayscale
         frame_bw = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
-
-        # Apply Gaussian blur to reduce noise
         frame_bw = cv2.GaussianBlur(frame_bw, (5, 5), 0)
 
         # Compute the difference between the current frame and the start frame
@@ -107,7 +102,6 @@ while True:
             threading.Thread(target=capture_image).start()
 
     if threshold is not None:
-        # Display the thresholded frame
         cv2.imshow("Cam", threshold)
     else:
         cv2.imshow("Cam", frame)
