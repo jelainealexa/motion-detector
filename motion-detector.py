@@ -53,6 +53,10 @@ start_frame = imutils.resize(start_frame, width=500)
 start_frame = cv2.cvtColor(start_frame, cv2.COLOR_BGR2GRAY)
 start_frame = cv2.GaussianBlur(start_frame, (21, 21), 0)
 
+alarm = False
+alarm_mode = False
+alarm_counter = 0
+
 # Beep the alarm
 def beep_alarm():
     for _ in range(5):
