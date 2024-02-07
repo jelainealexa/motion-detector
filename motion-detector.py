@@ -34,6 +34,12 @@ def send_email(subject, sender, recipients, body, image_filename=None):
         image_attachment.add_header("Content-Disposition", f"attachment; filename= {image_filename}")
         msg.attach(image_attachment)
 
+    # Connect to Gmail SMTP server
+    with smtplib.SMTP_SSL("smtp.gmail.com", 465) as smtp_server:
+        smtp_server.login(sender, APP_PASSWORD)
+        smtp_server.sendmail(sender, recipients, msg.as_string())
+    print("Message sent!")
+
 # Initialize camera capture
 
 cap = cv2.VideoCapture(0, cv2.CAP_DSHOW)
