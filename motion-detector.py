@@ -30,6 +30,9 @@ def send_email(subject, sender, recipients, body, image_filename=None):
     if image_filename:
         with open(image_filename, "rb") as image_file:
             image_data = image_file.read()
+        image_attachment = MIMEImage(image_data)
+        image_attachment.add_header("Content-Disposition", f"attachment; filename= {image_filename}")
+        msg.attach(image_attachment)
 
 # Initialize camera capture
 
