@@ -105,9 +105,12 @@ while True:
             alarm = True
             threading.Thread(target=beep_alarm).start()
             threading.Thread(target=capture_image).start()
-    
-    # Display the thresholded frame
-    cv2.imshow("Cam", threshold)
+
+    if threshold is not None:
+        # Display the thresholded frame
+        cv2.imshow("Cam", threshold)
+    else:
+        cv2.imshow("Cam", frame)
     
     # Key press to exit loop
     key_pressed = cv2.waitKey(30)
