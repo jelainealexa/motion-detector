@@ -18,7 +18,11 @@ recipients = ["coffeeejln@gmail.com"]
 
 # Define a function to send an email
 def send_email(subject, sender, recipients, body, image_filename=None):
-    
+    # Create a message object
+    msg = MIMEMultipart()
+    msg["Subject"] = subject
+    msg["From"] = sender
+    msg["To"] = ", ".join(recipients)
 
 # Initialize camera capture
 
