@@ -1,4 +1,12 @@
 # Initialize camera capture
+
+import cv2
+import imutils
+
+cap = cv2.VideoCapture(0, cv2.CAP_DSHOW)
+cap.set(cv2.CAP_PROP_FRAME_WIDTH, 640)
+cap.set(cv2.CAP_PROP_FRAME_HEIGHT, 480)
+
 # Set camera properties
 
 # Read the 1st frame as the starting frame
