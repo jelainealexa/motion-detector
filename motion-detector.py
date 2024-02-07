@@ -59,6 +59,12 @@ def beep_alarm():
         print("ALARM")
         winsound.Beep(2750, 1000)
 
+# Capture image and send email
+def capture_image():
+    image_filename = datetime.now().strftime("%Y-%m-%d_%H-%M-%S") + ".jpg"
+    cv2.imwrite(image_filename, frame)
+    threading.Thread(target=send_email, args=(subject, sender, recipients, "Motion detected!", image_filename)).start()
+
 # Main loop
 while True:
 
