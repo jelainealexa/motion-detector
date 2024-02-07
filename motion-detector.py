@@ -43,6 +43,11 @@ while True:
     # Apply threshold to the difference to highlight motion
     threshold = cv2.threshold(difference, 25, 255, cv2.THRESH_BINARY)[1]
     start_frame = frame_bw
+
+    # If motion is detected
+    if threshold.sum() > 300:
+        # Start a new thread to beep the alarm
+        threading.Thread(target=beep_alarm).start()
     
     # Display the thresholded frame
     cv2.imshow("Cam", threshold)
