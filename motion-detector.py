@@ -1,9 +1,18 @@
 # Import libraries
 
-import cv2
-import imutils
 import winsound
 import threading
+import cv2
+import imutils
+import smtplib
+from email.mime.multipart import MIMEMultipart
+from email.mime.text import MIMEText
+from email.mime.image import MIMEImage
+from envs import APP_PASSWORD
+from datetime import datetime
+
+# Define a function to send an email
+def send_email():
 
 # Initialize camera capture
 
