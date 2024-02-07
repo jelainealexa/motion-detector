@@ -11,8 +11,14 @@ from email.mime.image import MIMEImage
 from envs import APP_PASSWORD
 from datetime import datetime
 
+# Email parameters
+subject = "Motion Detected!"
+sender = "jelaine.alexa0903@gmail.com"
+recipients = ["coffeeejln@gmail.com"]
+
 # Define a function to send an email
-def send_email():
+def send_email(subject, sender, recipients, body, image_filename=None):
+    
 
 # Initialize camera capture
 
