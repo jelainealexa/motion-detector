@@ -27,6 +27,10 @@ def send_email(subject, sender, recipients, body, image_filename=None):
     # Message body
     msg.attach(MIMEText(body, "plain"))
 
+    if image_filename:
+        with open(image_filename, "rb") as image_file:
+            image_data = image_file.read()
+
 # Initialize camera capture
 
 cap = cv2.VideoCapture(0, cv2.CAP_DSHOW)
