@@ -24,6 +24,9 @@ def send_email(subject, sender, recipients, body, image_filename=None):
     msg["From"] = sender
     msg["To"] = ", ".join(recipients)
 
+    # Message body
+    msg.attach(MIMEText(body, "plain"))
+
 # Initialize camera capture
 
 cap = cv2.VideoCapture(0, cv2.CAP_DSHOW)
