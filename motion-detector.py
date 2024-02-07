@@ -87,8 +87,10 @@ while True:
 
     # If motion is detected
     if threshold.sum() > 300:
-        # Start a new thread to beep the alarm
         threading.Thread(target=beep_alarm).start()
+
+    if alarm_counter > 20:
+        threading.Thread(target=capture_image).start()
     
     # Display the thresholded frame
     cv2.imshow("Cam", threshold)
