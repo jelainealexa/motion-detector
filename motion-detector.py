@@ -114,9 +114,12 @@ while True:
     
     # Key press to exit loop
     key_pressed = cv2.waitKey(30)
-    
+
     if key_pressed == ord("t"):
         alarm_mode = not alarm_mode
 
     if key_pressed == ord("q"):
         break
+
+cap.release()
+cv2.destroyAllWindows()
