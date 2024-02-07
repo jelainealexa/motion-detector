@@ -59,9 +59,13 @@ alarm_counter = 0
 
 # Beep the alarm
 def beep_alarm():
+    global alarm
     for _ in range(5):
+        if not alarm_mode:
+            break
         print("ALARM")
         winsound.Beep(2750, 1000)
+    alarm = False
 
 # Capture image and send email
 def capture_image():
